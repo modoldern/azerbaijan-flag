@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-800 h-screen">
+    <header class="flex w-full h-[100px] justify-center items-center">
+      <form action="#" class="items-start">
+        <label for="px" class="text-white text-lg mb-3">Change flag size</label>
+        <div>
+          <input
+            id="input"
+            class="bg-slate-400 p-2 text-white outline-none rounded-l-md"
+            type="text"
+            id="px"
+            name="px"
+            pattern="^(?:[0-4]?[0-9]{1,2}|500)$"
+
+            title="Only numbers between [0-500]"
+          />
+          <input
+            type="submit"
+            id="btn"
+            value="ok"
+            class="bg-slate-600 hover:bg-slate-700 p-2 text-white rounded-r-md cursor-pointer"
+          />
+        </div>
+      </form>
+    </header>
+    <section
+      class="h-[calc(100vh_-_100px)] flex w-full justify-center items-center"
+    >
+      <main class="">
+        <aside class="bg-ust w-sheet_width h-sheet_height"></aside>
+        <aside
+          class="bg-orta w-sheet_width h-sheet_height flex justify-center items-center"
+        >
+          <article
+            class="w-symbols_area flex justify-between h-sheet_height items-center"
+          >
+            <div
+              class="w-big_moon h-big_moon relative bg-white rounded-full after:content-[''] after:block after:top-[calc((var(--big-moon)_-_var(--litle-moon))_/_2)] after:right-[calc(var(--ref-size)_/_-200)] after:w-litle_moon after:h-litle_moon after:bg-orta after:rounded-full after:absolute"
+            ></div>
+            <div class="relative">
+              <div
+                class="w-star h-star bg-white absolute top-[50%] translate-y-[-50%] right-0"
+                style="
+                  clip-path: polygon(
+                    50% 0%,
+                    63% 37%,
+                    100% 50%,
+                    63% 63%,
+                    50% 100%,
+                    37% 63%,
+                    0% 50%,
+                    37% 37%
+                  );
+                "
+              ></div>
+              <div
+                class="w-star h-star bg-white absolute top-[50%] translate-y-[-50%] right-0 rotate-45"
+                style="
+                  clip-path: polygon(
+                    50% 0%,
+                    63% 37%,
+                    100% 50%,
+                    63% 63%,
+                    50% 100%,
+                    37% 63%,
+                    0% 50%,
+                    37% 37%
+                  );
+                "
+              ></div>
+            </div>
+          </article>
+        </aside>
+        <aside class="bg-alt w-sheet_width h-sheet_height"></aside>
+      </main>
+    </section>
+
+    <script>
+        const btn = document.querySelector("#btn");
+        let input = document.querySelector("#input");
+
+        // When page load get value from localStorage
+        const storedSize = localStorage.getItem("refSize");
+        if (storedSize) {
+            document.documentElement.style.setProperty("--ref-size", storedSize + "px");
+            input.value = storedSize;
+        }
+
+        btn.addEventListener("click", function () {
+            const newSize = input.value;
+
+            // Checking input value
+            if (newSize >= 0 && newSize <= 500) {
+                document.documentElement.style.setProperty("--ref-size", newSize + "px");
+
+                // Save to local storage new value
+                localStorage.setItem("refSize", newSize);
+            } else {
+                alert("Only numbers between [0-500]");
+            }
+        });
+    </script>
+  </body>
+</html>

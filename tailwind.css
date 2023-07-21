@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --color-blue: #00B5E2;
+    --color-red: #EF3340;
+    --color-green: #509E2F;
+    --ref-size: 150px;
+    --sheet-width: calc(var(--ref-size) * 2);
+    --sheet-height: calc(var(--ref-size) / 3);
+    --big-moon: calc((var(--ref-size) *3) / 10);
+    --litle-moon: calc(var(--ref-size) / 4);
+    --symbols-area: calc((var(--ref-size) * 2) / 5);
+    --star: calc(var(--ref-size) / 6);
+    /* ... */
+  }
+  
+}
